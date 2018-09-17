@@ -61,7 +61,49 @@ for row in a:
 быть записаны числа 0. На двух диагоналях, прилегающих к главной, числа 1. На следующих двух диагоналях числа 2, 
 и т.д.
 """
-#
+
+n = int(input())
+a = [[abs(i - j) for j in range(n)] for i in range(n)]
+for row in a:
+    print(' '.join([str(i) for i in row]))
+
+# Задача «Побочная диагональ»
+"""
+Дано число n. Создайте массив размером n×n и заполните его по следующему правилу:
+Числа на диагонали, идущей из правого верхнего в левый нижний угол равны 1.
+Числа, стоящие выше этой диагонали, равны 0.
+Числа, стоящие ниже этой диагонали, равны 2.
+Полученный массив выведите на экран. Числа в строке разделяйте одним пробелом.
 """
 
+n = int(input())
+a = [[0] * n for i in range(n)]
+for i in range(n):
+    a[i][n - i - 1] = 1
+for i in range(n):
+    for j in range(n - i, n):
+        a[i][j] = 2
+for row in a:
+    for elem in row:
+        print(elem) #, end=' ')
+    print()
+
+# Задача «Поменять столбцы»
 """
+Дан двумерный массив и два числа: i и j. Поменяйте в массиве столбцы с номерами i и j и выведите результат.
+Программа получает на вход размеры массива n и m, затем элементы массива, затем числа i и j.
+Решение оформите в виде функции swap_columns(a, i, j).
+"""
+
+n, m = [int(i) for i in input().split()]
+a = [[int(j) for j in input().split()] for i in range(n)]
+i, j = [int(i) for i in input().split()]
+
+
+def swap_columns(a, i, j):
+    for k in range(n):
+            a[k][i], a[k][j] = a[k][j], a[k][i]
+
+
+swap_columns(a, i, j)
+print('\n'.join([' '.join([str(i) for i in row]) for row in a]))
