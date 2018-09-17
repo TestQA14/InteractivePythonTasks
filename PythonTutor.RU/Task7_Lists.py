@@ -185,7 +185,7 @@ for i in range(len(list)):
         if i != j and list[i] == list[j]:
             break
     else:
-        print(list[i], end=' ')
+        print(list[i])#, end=' ')
 
 # Задача «Кегельбан»
 """
